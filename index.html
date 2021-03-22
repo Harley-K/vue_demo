@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现一个简单的 vue </title>
+</head>
+<body>
+<div id="app">
+    <h1>{{person.name}} -- {{person.age}}</h1>
+    <p>{{title}}</p>
+    <p v-text="fonts" v-on:click="handle"></p>
+    <p v-html="test.html"></p>
+    <p>{{title}}</p>
+    <input type="text" v-model="title">
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+    <button @click="handle">缩写</button>
+</div>
+<script src="Observer.js"></script>
+<script src="./myVue.js"></script>
+<script>
+    const vm = new MyVue({
+        el:'#app',
+        data:{
+            person:{
+                name:'charles',
+                age:18
+            },
+            title:"自定义",
+            fonts:'test-----',
+            test:{
+                html:"<mark>111</mark>"
+            },
+            form:{
+                a:1
+            }
+        },
+        methods:{
+            handle(){
+                this.$data.title = '测试';
+            }
+        }
+    })
+</script>
+<!--<script>-->
+<!--    const f = document.createDocumentFragment();-->
+<!--    let firstChild;-->
+<!--    while(firstChild = document.querySelector('#app').firstChild){-->
+<!--        console.log(document.querySelector('#app').firstChild)-->
+<!--        f.append(firstChild);-->
+<!--    }-->
+<!--    console.log(f)-->
+<!--</script>-->
+</body>
+</html>
